@@ -133,7 +133,7 @@ sub printGraphSuggest {
 
 sub printData {
 	my $interface = determineInterface();
-	my $todayLine = `vnstat -i $interface | grep today`;
+	my $todayLine = `vnstat -i $interface -m 1 | grep [0-9]-`;
 	$todayLine =~ s/ +/ /g;
 
 	my @values = split(/ /, $todayLine);
